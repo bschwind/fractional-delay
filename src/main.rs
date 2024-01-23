@@ -1,5 +1,5 @@
 fn main() {
-    let mut tone_generator = ToneGenerator::new(600, 48_000);
+    let mut tone_generator_1 = ToneGenerator::new(600, 48_000);
     let mut tone_generator_2 = ToneGenerator::new(1200, 48_000);
     let mut tone_generator_3 = ToneGenerator::new(2562, 48_000);
 
@@ -8,11 +8,11 @@ fn main() {
     let mut fractional_delay = FractionalDelay::new(delay);
 
     for i in 0..=100 {
-        let next_sample = tone_generator.next();
+        let next_1 = tone_generator_1.next();
         let next_2 = tone_generator_2.next();
         let next_3 = tone_generator_3.next();
 
-        let next_sample = next_sample + next_2 + next_3;
+        let next_sample = next_1 + next_2 + next_3;
 
         let delayed_sample = fractional_delay.process(next_sample);
         println!("{i}, {next_sample}, {delayed_sample}");
